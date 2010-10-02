@@ -35,7 +35,8 @@ Gem::Specification.new do |s|
      "lib/vidibus/user/extensions/controller.rb",
      "lib/vidibus/user/mongoid.rb",
      "lib/vidibus/user/warden_strategy.rb",
-     "spec/spec_helper.rb"
+     "spec/spec_helper.rb",
+     "vidibus-user.gemspec"
   ]
   s.homepage = %q{http://github.com/vidibus/vidibus-user}
   s.rdoc_options = ["--charset=UTF-8"]
