@@ -8,12 +8,17 @@ begin
   require "jeweler"
   Jeweler::Tasks.new do |gem|
     gem.name = "vidibus-user"
-    gem.summary = %Q{Single Sign-on user model}
-    gem.description = %Q{Description...}
+    gem.summary = %Q{Single sign-on for Vidibus applications.}
+    gem.description = %Q{Provides single sign-on and a local user model.}
     gem.email = "andre@vidibus.com"
     gem.homepage = "http://github.com/vidibus/vidibus-user"
     gem.authors = ["Andre Pankratz"]
+    gem.add_dependency "rails", "~> 3.0.0"
     gem.add_dependency "mongoid", "~> 2.0.0.beta.20"
+    gem.add_dependency "warden"
+    gem.add_dependency "oauth2"
+    gem.add_dependency "vidibus-secure"
+    gem.add_dependency "vidibus-uuid"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError

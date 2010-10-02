@@ -6,6 +6,7 @@ require "active_support/core_ext"
 require "rspec"
 require "rr"
 require "mongoid"
+require "webmock/rspec"
 
 require "vidibus-user"
 
@@ -17,6 +18,7 @@ Mongoid.configure do |config|
 end
 
 RSpec.configure do |config|
+  config.include WebMock
   config.mock_with :rr
   config.before(:each) do
     Mongoid.master.collections.select {|c| c.name !~ /system/}.each(&:drop)
