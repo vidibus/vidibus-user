@@ -28,6 +28,11 @@ Warden::Strategies.add(:connector) do
     @this ||= Service.this
   end
 
+  # Returns the current realm
+  def realm
+    @realm ||= env[:realm] || raise("No realm available!")
+  end
+
   # Returns OAuth client
   def client
     @client ||= OAuth2::Client.new(credentials[:client_id], credentials[:client_secret], :site => credentials[:connector_url])
