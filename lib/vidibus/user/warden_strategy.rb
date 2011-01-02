@@ -47,7 +47,7 @@ Warden::Strategies.add(:connector) do
 
     # Exchange code for token and fetch user data
     access_token = client.web_server.get_access_token(code, :redirect_url => redirect_url)
-    user_data = JSON.parse(access_token.get("/me"))
+    user_data = JSON.parse(access_token.get("/oauth/user"))
 
     unless user = User.where(:email => user_data["email"]).first
       unless user = User.create(user_data)
