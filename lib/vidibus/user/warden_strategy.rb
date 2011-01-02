@@ -50,7 +50,9 @@ Warden::Strategies.add(:connector) do
     user_data = JSON.parse(access_token.get("/me"))
 
     unless user = User.where(:email => user_data["email"]).first
-      user = User.create!(user_data)
+      unless user = User.create(user_data)
+        raise "user.errors = #{user.errors.inspect}"
+      end
     end
     success!(user)
   rescue OAuth2::HTTPError => e
