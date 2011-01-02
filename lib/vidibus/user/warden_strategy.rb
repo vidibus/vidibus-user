@@ -13,12 +13,12 @@ Warden::Strategies.add(:connector) do
   # To protect the service's secret, a custom signature will be sent instead.
   def credentials
     @credentials ||= begin
-      connector = Service.connector
-      raise "Failed to set Connector credentials! Service has not been set up, Connector data is missing." unless this and connector
+      service = Service(:user, realm)
+      raise "Failed to set service credentials! This service has not been set up, user service is missing." unless this and service
       {
-        :client_id => this.uuid,
-        :client_secret => Vidibus::Secure.sign("#{connector.url}#{this.uuid}", this.secret),
-        :connector_url => connector.url
+        :client_id => "#{this.uuid}-#{realm}",
+        :client_secret => Vidibus::Secure.sign("#{service.url}#{this.uuid}", service.secret),
+        :service_url => service.url
       }
     end
   end
@@ -35,7 +35,7 @@ Warden::Strategies.add(:connector) do
 
   # Returns OAuth client
   def client
-    @client ||= OAuth2::Client.new(credentials[:client_id], credentials[:client_secret], :site => credentials[:connector_url])
+    @client ||= OAuth2::Client.new(credentials[:client_id], credentials[:client_secret], :site => credentials[:service_url])
   end
 
   def authenticate!
@@ -43,7 +43,8 @@ Warden::Strategies.add(:connector) do
     redirect_url = "#{host}/authenticate_user"
 
     # Fetch code first
-    return redirect!(client.web_server.authorize_url(:redirect_url => redirect_url)) unless code
+    args = { :redirect_url => redirect_url }
+    return redirect!(client.web_server.authorize_url(args)) unless code
 
     # Exchange code for token and fetch user data
     access_token = client.web_server.get_access_token(code, :redirect_url => redirect_url)
