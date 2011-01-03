@@ -13,12 +13,6 @@ begin
     gem.email = "andre@vidibus.com"
     gem.homepage = "http://github.com/vidibus/vidibus-user"
     gem.authors = ["Andre Pankratz"]
-    gem.add_dependency "rails", "~> 3.0.0"
-    gem.add_dependency "mongoid", "~> 2.0.0.beta.20"
-    gem.add_dependency "warden"
-    gem.add_dependency "oauth2"
-    gem.add_dependency "vidibus-secure"
-    gem.add_dependency "vidibus-uuid"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
