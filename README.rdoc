@@ -6,6 +6,7 @@ This gem is part of the open source SOA framework Vidibus: vidibus.org.
 
 It is far from being complete, but this will change soon.
 
+
 == Installation
 
 Add the dependency to the Gemfile of your application:
@@ -13,6 +14,17 @@ Add the dependency to the Gemfile of your application:
   gem "vidibus-user"
 
 Then call bundle install on your console.
+
+
+== Obtaining user data
+
+After authorization via OAuth this gem requests user data from providing service. It will call the following route:
+
+  /oauth/user
+
+It expects JSON data to be returned. The dataset must at least include the user's uuid.
+
+The vidibus-oauth2_server gem will provide a controller for this task.
 
 
 == Dependencies
