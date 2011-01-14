@@ -41,20 +41,28 @@ Warden::Strategies.add(:connector) do
   def authenticate!
     code = params["code"]
     redirect_url = "#{host}/authenticate_user"
+    args = { :redirect_url => redirect_url }
 
     # Fetch code first
-    args = { :redirect_url => redirect_url }
     return redirect!(client.web_server.authorize_url(args)) unless code
 
-    # Exchange code for token and fetch user data
+    # Exchange code for token
     access_token = client.web_server.get_access_token(code, :redirect_url => redirect_url)
-    user_data = JSON.parse(access_token.get("/oauth/user"))
 
-    unless user = User.where(:email => user_data["email"]).first
-      unless user = User.create(user_data)
-        raise "user.errors = #{user.errors.inspect}"
+    # Try to fetch user data
+    begin
+      response = access_token.get("/oauth/user")
+      user_data = JSON.parse(response)
+      unless user = User.where(:uuid => user_data["uuid"]).first
+        unless user = User.create(user_data)
+          raise "user.errors = #{user.errors.inspect}"
+        end
       end
+    rescue OAuth2::HTTPError
+      Rails.logger.error "Failed to fetch user data from #{credentials[:service_url]}/oauth/user"
+      user = true
     end
+
     success!(user)
   rescue OAuth2::HTTPError => e
     raise e.response.body
