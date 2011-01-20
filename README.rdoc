@@ -1,8 +1,8 @@
-= vidibus-user
+= Vidibus::User
 
 Provides single sign-on through OAuth2 authentication. It adds a simple user model to your application which can be extended easily.
 
-This gem is part of the open source SOA framework Vidibus: vidibus.org.
+This gem is part of the open source SOA framework {Vidibus}[http://vidibus.org].
 
 It is far from being complete, but this will change soon.
 
@@ -18,18 +18,18 @@ Then call bundle install on your console.
 
 == Obtaining user data
 
-After authorization via OAuth this gem requests user data from providing service. It will call the following route:
+After authorization via OAuth2 this gem requests user data from the providing service. It will call the following route:
 
   /oauth/user
 
-It expects JSON data to be returned. The dataset must at least include the user's uuid.
+It expects JSON data to be returned. The dataset must at least include the user's UUID.
 
-The vidibus-oauth2_server gem will provide a controller for this task.
+The {Vidibus::Oauth2Server}[https://github.com/vidibus/vidibus-oauth2_server] gem will provide a controller for this task.
 
 
 == Dependencies
 
-In order to perform authentication, this gem depends on services provided by the vidibus-service gem.
+In order to perform authentication, this gem depends on services provided by the {Vidibus::Service}[https://github.com/vidibus/vidibus-service] gem.
 
 
 == TODO
