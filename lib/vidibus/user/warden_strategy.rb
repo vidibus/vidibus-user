@@ -53,14 +53,14 @@ Warden::Strategies.add(:connector) do
     begin
       response = access_token.get("/oauth/user")
       user_data = JSON.parse(response)
-      unless user = User.where(:uuid => user_data["uuid"]).first
-        unless user = User.create(user_data)
-          raise "user.errors = #{user.errors.inspect}"
-        end
-      end
+      selector = {:uuid => user_data["uuid"]}
+      user = User.where(selector).first || User.new(selector)
+      user.save!
     rescue OAuth2::HTTPError
       Rails.logger.error "Failed to fetch user data from #{credentials[:service_url]}/oauth/user"
       user = true
+    rescue => e
+      Rails.logger.error "Error: #{e.message}"
     end
 
     success!(user)
