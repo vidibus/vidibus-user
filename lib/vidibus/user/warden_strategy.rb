@@ -55,6 +55,7 @@ Warden::Strategies.add(:connector) do
       user_data = JSON.parse(response)
       selector = {:uuid => user_data["uuid"]}
       user = User.where(selector).first || User.new(selector)
+      user.email = user_data["email"]
       user.save!
     rescue OAuth2::HTTPError
       Rails.logger.error "Failed to fetch user data from #{credentials[:service_url]}/oauth/user"
