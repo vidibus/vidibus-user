@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{vidibus-user}
-  s.version = "0.0.5"
+  s.version = "0.0.6"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Andre Pankratz"]
-  s.date = %q{2011-02-06}
+  s.date = %q{2011-02-24}
   s.description = %q{Provides single sign-on and a local user model.}
   s.email = %q{andre@vidibus.com}
   s.extra_rdoc_files = [
