@@ -40,8 +40,8 @@ Warden::Strategies.add(:connector) do
 
   def authenticate!
     code = params["code"]
-    redirect_url = "#{host}/authenticate_user"
-    args = { :redirect_url => redirect_url }
+    redirect_url = "#{host}/authenticate_user?realm=#{realm}"
+    args = {:redirect_url => redirect_url}
 
     # Fetch code first
     return redirect!(client.web_server.authorize_url(args)) unless code
