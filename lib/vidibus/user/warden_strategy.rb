@@ -17,7 +17,7 @@ Warden::Strategies.add(:connector) do
       raise "Failed to set service credentials! This service has not been set up, user service is missing." unless this and service
       {
         :client_id => "#{this.uuid}-#{realm}",
-        :client_secret => Vidibus::Secure.sign("#{service.url}#{this.uuid}", service.secret),
+        :client_secret => Vidibus::Secure.sign(this.uuid, service.secret),
         :service_url => service.url
       }
     end
