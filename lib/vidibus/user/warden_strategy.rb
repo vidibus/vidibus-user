@@ -30,7 +30,7 @@ Warden::Strategies.add(:connector) do
 
   # Returns the current realm
   def realm
-    @realm ||= params["realm"] || env[:realm] || raise("No realm available!")
+    @realm ||= params["realm"] || env[:realm] || raise(Vidibus::User::NoRealmError, "No realm available!")
   end
 
   # Returns OAuth client
