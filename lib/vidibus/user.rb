@@ -1,3 +1,5 @@
-require "user/extensions"
-require "user/warden_strategy"
-require "user/mongoid"
+require 'vidibus/user/errors'
+require 'vidibus/user/mongoid'
+require 'vidibus/user/warden'
+require 'vidibus/user/extensions'
+require 'vidibus/user/railstie'
