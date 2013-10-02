@@ -8,6 +8,10 @@ if defined?(::Rails::Engine)
           manager.default_strategies :single_sign_on
           manager.default_scope = :user
         end
+
+        config.after_initialize do
+          Vidibus::User::Warden.logger = Rails.logger
+        end
       end
     end
   end
