@@ -1,5 +1,5 @@
 require 'vidibus/user/callback_app'
 
 Rails.application.routes.draw do
-  match '/authenticate_user' => Vidibus::User::CallbackApp
+  get '/authenticate_user' => Vidibus::User::CallbackApp
 end
