@@ -33,6 +33,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'rack'
   s.add_development_dependency 'webmock'
 
-  s.files = Dir.glob('{lib,app,config}/**/*') + %w[README.rdoc Rakefile]
+  s.files = Dir.glob('{lib,app,config}/**/*') + %w[README.md Rakefile]
   s.require_path = 'lib'
 end
