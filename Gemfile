@@ -5,3 +5,4 @@ gemspec
 
 gem 'mongoid', '>= 4', github: 'mongoid/mongoid'
 gem 'vidibus-service', :github => 'vidibus/vidibus-service'
+gem 'vidibus-secure', github: 'vidibus/vidibus-secure'
