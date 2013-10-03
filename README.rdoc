@@ -34,10 +34,9 @@ In order to perform authentication, this gem depends on services provided by the
 
 == TODO
 
-* Write specs
 * Explain usage and integration
 
 
 == Copyright
 
-Copyright (c) 2010 Andre Pankratz. See LICENSE for details.
+Copyright (c) 2010-2013 Andre Pankratz. See LICENSE for details.
