@@ -8,7 +8,7 @@ describe 'single sign-on strategy' do
     ::User.new(:uuid => '809225c00a370131a99208606e47f892')
   end
   let(:user_data) do
-    {'uuid' => user.uuid, 'name' => 'Hannes'}
+    {'uuid' => user.uuid, 'email' => 'some@email.xyz'}
   end
   let(:redirect_url) do
     "#{strategy.host}/authenticate_user?realm=#{strategy.realm}"
