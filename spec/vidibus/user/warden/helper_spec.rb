@@ -29,9 +29,8 @@ describe Vidibus::User::Warden::Helper do
       helper.realm.should eq(realm)
     end
 
-    it 'should raise an error if realm is unset' do
-      expect { helper.realm }.
-        to raise_error(Vidibus::User::RealmError)
+    it 'should return nil if realm is unset' do
+      helper.realm.should be_nil
     end
   end
 

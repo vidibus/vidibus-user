@@ -15,8 +15,7 @@ module Vidibus
 
         # Authenticates user either from single sign on cookie
         # or from email and password params.
-        # Throws a Vidibus::User::UnauthenticatedError
-        # if authentication fails.
+        # Calls failure app if authentication fails.
         def authenticate!
           return if authenticated?
           warden.authenticate!

@@ -28,8 +28,7 @@ module Vidibus
 
         # Returns the current realm
         def realm
-          @realm ||= params['realm'] || env[:realm] ||
-            raise(RealmError, 'No realm available!')
+          @realm ||= params['realm'] || env[:realm]
         end
 
         # Returns OAuth client
