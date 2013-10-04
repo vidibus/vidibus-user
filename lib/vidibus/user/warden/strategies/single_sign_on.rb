@@ -7,9 +7,9 @@ require 'oauth2'
 
   USER_DATA_PATH = '/oauth/user'
 
-  # Always run this strategy
+  # Run this strategy only if a realm is present.
   def valid?
-    true
+    !!realm
   end
 
   def user

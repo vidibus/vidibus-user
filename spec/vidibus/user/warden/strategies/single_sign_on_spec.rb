@@ -205,8 +205,14 @@ describe 'single sign-on strategy' do
   end
 
   describe '#valid?' do
-    it 'should always return true' do
+    it 'should return true if a realm is given' do
+      stub(strategy).realm { '123' }
       strategy.valid?.should be_true
+    end
+
+    it 'should return false if no realm is given' do
+      stub(strategy).realm { nil }
+      strategy.valid?.should be_false
     end
   end
 
