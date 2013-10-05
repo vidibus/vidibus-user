@@ -7,6 +7,7 @@ if defined?(::Rails::Engine)
         config.app_middleware.use ::Warden::Manager do |manager|
           manager.default_strategies :single_sign_on
           manager.default_scope = :user
+          manager.failure_app = Vidibus::User.failure_app
         end
 
         config.after_initialize do

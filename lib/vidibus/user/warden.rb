@@ -2,6 +2,7 @@ require 'vidibus/user/warden/serialize'
 require 'vidibus/user/warden/helper'
 require 'vidibus/user/warden/strategies'
 require 'vidibus/user/warden/callbacks'
+require 'vidibus/user/warden/failure_app'
 
 module Vidibus
   module User

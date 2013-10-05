@@ -10,5 +10,8 @@ module Vidibus
 
     attr_accessor :login_path
     @login_path = '/login'
+
+    attr_accessor :failure_app
+    @failure_app = Vidibus::User::Warden::FailureApp
   end
 end
