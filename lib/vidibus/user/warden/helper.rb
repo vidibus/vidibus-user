@@ -47,7 +47,7 @@ module Vidibus
         end
 
         def logger
-          Vidibus::User::Warden.logger
+          Vidibus::User.logger
         end
       end
     end

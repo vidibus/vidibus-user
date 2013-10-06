@@ -11,7 +11,7 @@ if defined?(::Rails::Engine)
         end
 
         config.after_initialize do
-          Vidibus::User::Warden.logger = Rails.logger
+          Vidibus::User.logger = Rails.logger
         end
       end
     end

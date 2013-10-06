@@ -107,7 +107,7 @@ describe Vidibus::User::Warden::Helper do
 
   describe '#logger' do
     it 'should return Vidibus::User::Warden.logger' do
-      mock(Vidibus::User::Warden).logger
+      mock(Vidibus::User).logger
       helper.logger
     end
   end
