@@ -37,6 +37,7 @@ module Vidibus
         end
 
         # Returns current host.
+        # TODO: return forwarded host, if proxied
         def host
           "#{protocol}#{env['HTTP_HOST']}"
         end
