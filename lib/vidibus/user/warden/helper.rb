@@ -43,7 +43,7 @@ module Vidibus
 
         # Returns protocol depending on SERVER_PORT.
         def protocol
-          env['SERVER_PORT'] == 443 ? 'https://' : 'http://'
+          env['SERVER_PORT'].to_i == 443 ? 'https://' : 'http://'
         end
 
         def logger
